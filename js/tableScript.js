@@ -2,11 +2,11 @@ let h1Title = document.createElement("h1");
 h1Title.innerText = "Sopa de letras";
 let divTitleBlock = document.createElement("div").appendChild(h1Title);
 document.body.appendChild(divTitleBlock);
-
 let table = document.createElement("table");
 document.body.appendChild(table);
 
 let words = [
+    "Palabras:",
     "HTML",
     "TITLE",
     "HEAD",
@@ -62,6 +62,23 @@ for (let i = 0; i < letters.length; i++) {
 
 for (let i = 0; i < letters.length; i++) {
     table.appendChild(letters[i]) /*Inserts each td inside the table*/
+}
+
+let wordList = document.createElement("ul");
+wordList.setAttribute("class","overview");
+document.body.appendChild(wordList);
+
+for (let i = 0; i < words.length; i++) {
+    let wordListElement = document.createElement("li");
+    if(i == 0){
+        let wordListTitle = document.createElement("u");
+        wordListTitle.innerText = words[i];
+        wordListElement.appendChild(wordListTitle);
+    }else{
+        wordListElement.innerText = words[i];
+    }
+    wordListElement.setAttribute("id",`${i}`);
+    wordList.appendChild(wordListElement);
 }
 
 let definitions = [
@@ -130,7 +147,6 @@ function checkLetter(pos){
             }
         }
     }
-    console.log(selectedLetters);
     checkWord(retrieveWordFromArray(selectedLetters));
 }
 
@@ -140,7 +156,6 @@ function retrieveWordFromArray(lettersArray){
         if(selectedLetters[i]!==undefined){
             word += selectedLetters[i].innerText;
         }
-        console.log(word);
     }
     return word;
 }
@@ -156,8 +171,9 @@ function checkWord(word){
         for(let i = 0; i < words.length; i++){
             if(words[i]===word){
                 words[i] = words[i].strike();
+                wordTag = document.getElementById(`${i}`);
+                wordTag.style.textDecoration = "line-through";
             }
         }
-        console.log(words);
     }
 }
