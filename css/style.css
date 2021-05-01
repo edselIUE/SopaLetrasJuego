@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    width: 90%;
+    max-width: 1000px;
+    margin: 10px auto; /*para centrar la pagina*/
+    background: #E9ECF4;
+    color: #000;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: repeat(3,1fr); /*3 columnas del mismo tamaño, para eso se hace repeat*/
+    grid-template-rows: repeat(4,auto); /*4 filas y que el tamaño se ajuste solo*/
+    grid-template-areas: "header header header"
+                         "table table words"
+                         "title-2 title-2 title-2"
+                         "definitions definitions definitions";
+    grid-gap: 20px;
+}
+
+.wrapper .header,
+.wrapper .table-container,
+.wrapper .word-list-container,
+.wrapper .word-container,
+.wrapper .title-2{
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.header a{
+    text-decoration: none;
+    color: #fff;
+    margin: auto 5px;
+}
+
+.header a:hover{
+    color: #fff;
+}
+
+.header a:visited{
+    color:#fff;
+}
+
+.header .title-1{
+    text-align: center;
+}
+
+.word-container li{
+    border: 0.5px solid black;
+    margin: 10px;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+
+.word-container li:hover
+{
+    background: #55a8fd;
+}
+
+.word-list-container li:hover{
+    text-decoration: underline;
+}
+
+
+.header{
+    grid-area: header;
+    background: #12203F;
+    color: #fff;
+}
+
+th, td {
+    border: 0.5px solid black;
+    border-collapse: collapse;
+
+}
+
+.table-container{
+    grid-area: table;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.table{
+    border-color: chocolate;
+    border: 0.5px solid black;
+    border-collapse: collapse;
+}
+
+.word-list-container{
+    grid-area: words;
+    background:#fAA430;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-list-container > ul,
+.word-container li{
+    list-style-type: none;
+}
+
+.title-2{
+    grid-area: title-2;
+    background: #12203F;
+    color: #fff;
+    text-align: center;
+}
+
+.word-container{
+    grid-area: definitions;
+}
+
+@media screen and (max-width:768px){
+    .wrapper{
+        display: grid;
+        grid-template-areas: "header header header"
+                             "table table table"
+                             "words words words"
+                             "title-2 title-2 title-2"
+                             "definitions definitions definitions";
+    }
+}
+
+

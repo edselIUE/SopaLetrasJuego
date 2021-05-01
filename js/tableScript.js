@@ -1,10 +1,9 @@
-let h1Title = document.createElement("h1");
-h1Title.innerText = "Sopa de letras";
-let divTitleBlock = document.createElement("div").appendChild(h1Title);
-document.body.appendChild(divTitleBlock);
+/*Variable definitions*/ 
 let table = document.createElement("table");
-document.body.appendChild(table);
-
+let wordList = document.createElement("ul");
+let wordListDiv = document.getElementsByClassName("word-list-container");
+let tableDiv = document.getElementsByClassName("table-container");
+let selectedLetters = []
 let words = [
     "Palabras:",
     "HTML",
@@ -26,7 +25,6 @@ let words = [
     "LINK",
     "FORM"
 ]
-
 let letters = [
     "Y	L	U	U	C	B	J	N	Q	V	G	S	D	L	H",
     "W	M	L	V	K	L	X	P	P	N	O	P	T	G	N",
@@ -44,6 +42,14 @@ let letters = [
     "L	O	I	H	W	H	F	R	O	D	M	J	K	M	U",
     "I	G	C	E	L	T	I	T	Z	T	N	E	I	V	J",
 ];
+
+/*table and wordlist insertions*/
+table.setAttribute("class","table");
+tableDiv[0].appendChild(table);
+wordList.setAttribute("class","overview");
+wordListDiv[0].appendChild(wordList);
+
+/*Table and wordlist display code*/
 
 for (let i = 0; i < letters.length; i++) {
     let tableRow = document.createElement("tr"); /*Creates a row*/
@@ -64,9 +70,6 @@ for (let i = 0; i < letters.length; i++) {
     table.appendChild(letters[i]) /*Inserts each td inside the table*/
 }
 
-let wordList = document.createElement("ul");
-wordList.setAttribute("class","overview");
-document.body.appendChild(wordList);
 
 for (let i = 0; i < words.length; i++) {
     let wordListElement = document.createElement("li");
@@ -81,51 +84,7 @@ for (let i = 0; i < words.length; i++) {
     wordList.appendChild(wordListElement);
 }
 
-let definitions = [
-    "div-Etiqueta contenedora de tipo block(ocupa toda la linea)",
-    "html-Etiqueta que define la raiz de un documento HTML",
-    "title-Etiqueta que define el título de un documento",
-    "head-Etiqueta que define la parte del codigo HTML donde se carga información extra como fondos, estilos, etc.Del documento",
-    "body-Etiqueta que define el cuerpo del documento",
-    "doctype-Etiqueta que define el tipo de documento como la versión del HTML a usar por los navegadores",
-    "dom-Es un objeto que permite acceder a todos los elementos de un documento HTML en Javascript",
-    "label-Etiqueta que permite, entre varias cosas, mayor legibilidad en los formularios permitiendo añadir texto",
-    "input-Contenedora para texto",
-    "textarea-Contenedora para un campo de texto más amplio",
-    "span-Etiqueta contenedora de tipo inline(no ocupa toda la linea)",
-    "ul-Define una lista desornada",
-    "il-Define un elemento de una lista",
-    "b-Etiqueta que permite usar letras en negrita",
-    "i-Etiqueta que permite usar letras en cursiva",
-    "u-Etiqueta que permite subrayar",
-    "strong-Etiqueta que permite enfatizar",
-    "css-Lenguaje en cascada que permite añadir estilos a una página HTML",
-    "link-Etiqueta que define una relacion entre un recurso externo y el documento",
-    "form-Etiqueta que define un formulario HTML para la entrada de datos",
-];
-
-let h2Title = document.createElement("h2");
-h2Title.innerText = "Lista de definiciones";
-let divDefinitionsTitleBlock = document.createElement("div").appendChild(h2Title);
-document.body.appendChild(divDefinitionsTitleBlock);
-
-let definitionsUnorderedList = document.createElement("ul");
-document.body.appendChild(definitionsUnorderedList);
-
-for(let i = 0; i<definitions.length; i++){
-    let listElement = document.createElement("li");
-    let uElement = document.createElement("u");
-    let pElement = document.createElement("p");
-    let word = definitions[i].split("-")[0];
-    let definition = definitions[i].split("-")[1];
-    uElement.innerText=word;
-    pElement.innerText=definition;
-    listElement.appendChild(uElement);
-    listElement.appendChild(pElement);
-    definitionsUnorderedList.appendChild(listElement);
-}
-
-let selectedLetters = []
+/*Function definitions*/
 
 function checkLetter(pos){
     letterTag = document.getElementById(`i=${pos[0]} j=${pos[1]}`);
