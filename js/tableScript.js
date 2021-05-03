@@ -4,6 +4,7 @@ let wordList = document.createElement("ul");
 let wordListDiv = document.getElementsByClassName("word-list-container");
 let tableDiv = document.getElementsByClassName("table-container");
 let selectedLetters = []
+
 let words = [
     "Palabras:",
     "HTML",
@@ -25,6 +26,8 @@ let words = [
     "LINK",
     "FORM"
 ]
+
+
 let letters = [
     "Y	L	U	U	C	B	J	N	Q	V	G	S	D	L	H",
     "W	M	L	V	K	L	X	P	P	N	O	P	T	G	N",
@@ -72,17 +75,18 @@ for (let i = 0; i < letters.length; i++) {
 
 
 for (let i = 0; i < words.length; i++) {
-    let wordListElement = document.createElement("li");
-    if(i == 0){
-        let wordListTitle = document.createElement("u");
-        wordListTitle.innerText = words[i];
-        wordListElement.appendChild(wordListTitle);
-    }else{
-        wordListElement.innerText = words[i];
-    }
-    wordListElement.setAttribute("id",`${i}`);
-    wordList.appendChild(wordListElement);
+        let wordListElement = document.createElement("li");
+        if(i == 0){
+            let wordListTitle = document.createElement("u");
+            wordListTitle.innerText = words[i];
+            wordListElement.appendChild(wordListTitle);
+        }else{
+            wordListElement.innerText = words[i];
+        }
+        wordListElement.setAttribute("id",`${i}`);
+        wordList.appendChild(wordListElement);
 }
+
 
 /*Function definitions*/
 
@@ -131,7 +135,12 @@ function checkWord(word){
             if(words[i]===word){
                 words[i] = words[i].strike();
                 wordTag = document.getElementById(`${i}`);
+                score = document.getElementById("scoreCounter");
+                score.innerText = `${parseInt(score.innerText)+100}`
                 wordTag.style.textDecoration = "line-through";
+                if(parseInt(score.innerText)===1800){
+                    alert("Ganaste!");
+                }
             }
         }
     }

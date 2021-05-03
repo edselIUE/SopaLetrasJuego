@@ -16,6 +16,7 @@
     grid-template-rows: repeat(4,auto); /*4 filas y que el tamaño se ajuste solo*/
     grid-template-areas: "header header header"
                          "table table words"
+                         "score score words"
                          "title-2 title-2 title-2"
                          "definitions definitions definitions";
     grid-gap: 20px;
@@ -116,11 +117,19 @@ th, td {
     grid-area: definitions;
 }
 
+.score-container{
+    grid-area: score;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width:768px){
     .wrapper{
         display: grid;
         grid-template-areas: "header header header"
                              "table table table"
+                             "score score score"
                              "words words words"
                              "title-2 title-2 title-2"
                              "definitions definitions definitions";
